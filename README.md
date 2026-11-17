@@ -56,7 +56,7 @@ Four scikit-learn models were trained and compared on the same test set (mean sq
 | Linear Regression (closed form) | 195,577 | 186,904 |
 | Linear Regression (SGD, gradient descent) | 200,416 | 197,283 |
 
-Random Forest has the lowest test MSE (typical error about ±330 RWF on an average price of ~3,900 RWF), so it is the model served by the API.
+Random Forest has the lowest test MSE (typical error about +or- 330 RWF on an average price of ~3,900 RWF), so it is the model served by the API.
 
 ## Limitations
 The WFP data only records hen prices for 2012–2015. Prices have risen a lot since then, so the model underpredicts current prices. The `/retrain` endpoint lets the model learn from newer market data without redeploying.
