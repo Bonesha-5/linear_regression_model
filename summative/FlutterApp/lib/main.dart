@@ -101,7 +101,7 @@ const Map<String, String> fieldNames = {
   'longitude': 'Longitude',
   'year': 'Year',
   'month': 'Month',
-  'egg_price': 'Egg price',
+  'egg_price': 'Egg price (per egg)',
   'maize_price': 'Maize price',
   'soybean_price': 'Soybean price',
   'beans_price': 'Dry beans price',
@@ -617,7 +617,7 @@ class _PredictionPageState extends State<PredictionPage> {
     subtitle: 'In RWF, same market and month',
     children: [
       _pair(
-        _numberField('egg_price', 'Egg (each)', '20 – 1,000', unit: 'RWF'),
+        _numberField('egg_price', 'Egg (per egg)', '20 – 1,000', unit: 'RWF'),
         _numberField('maize_price', 'Maize (kg)', '50 – 2,000', unit: 'RWF'),
       ),
       _pair(
@@ -630,7 +630,7 @@ class _PredictionPageState extends State<PredictionPage> {
         _numberField(
           'beans_price',
           'Dry beans (kg)',
-          '100 – 2,000',
+          '100 – 5,000',
           unit: 'RWF',
         ),
       ),

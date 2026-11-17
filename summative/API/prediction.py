@@ -17,7 +17,6 @@ from pydantic import BaseModel, Field
 from sklearn.base import clone
 
 # Load the saved model bundle once at startup (from the repository file)
-
 MODEL_PATH = Path(__file__).parent / "best_model.pkl"
 bundle = joblib.load(MODEL_PATH)
 model_lock = threading.Lock()  # stops /predict from reading a half-updated model
@@ -53,7 +52,7 @@ app = FastAPI(
 #   only methods this API uses. Headers: only Content-Type and Accept, which
 #   JSON and file-upload requests need. Credentials: False, because the API
 #   uses no cookies or login sessions, so browsers should never send them.
-
+# Note: the Flutter mobile app is not a browser, so CORS does not affect it.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -79,13 +78,14 @@ class HenPriceInput(BaseModel):
     year: int = Field(ge=2012, le=2030, description="Year of sale")
     month: int = Field(ge=1, le=12, description="Month of sale (1-12)")
     egg_price: float = Field(
-        ge=20, le=1000, description="Price of one egg in the same market (RWF)")
+        ge=20, le=1000,
+        description="Price of ONE egg, not a tray (RWF). A tray of 30 at 5,400 RWF = 180 per egg")
     maize_price: float = Field(
         ge=50, le=2000, description="Price of 1 kg maize (RWF)")
     soybean_price: float = Field(
         ge=100, le=3000, description="Price of 1 kg soybeans (RWF)")
     beans_price: float = Field(
-        ge=100, le=2000, description="Price of 1 kg dry beans (RWF)")
+        ge=100, le=5000, description="Price of 1 kg dry beans (RWF)")
     beef_price: float = Field(
         ge=500, le=10000, description="Price of 1 kg beef (RWF)")
 
@@ -160,8 +160,8 @@ async def retrain(file: UploadFile = File(..., description="CSV with the same co
         bundle["preprocessor"] = new_preprocessor
         bundle["model"] = new_model
         bundle["training_data"] = combined
-    # The updated model lives in memory which it is lost when the
-    # service restarts or sleeps, and the original model is loaded again.
+    # The updated model lives in memory, so it is lost when the service
+    # restarts or sleeps, and the original model is loaded again.
 
     return {
         "message": "Model retrained and now in use.",
