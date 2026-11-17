@@ -65,14 +65,16 @@ The WFP data only records hen prices for 2012–2015. Prices have risen a lot si
 ```
 linear_regression_model/
 ├── README.md
+├── .gitignore                       # excludes .venv, caches and the retrain sample CSV
 └── summative/
     ├── pyproject.toml
     ├── uv.lock
     ├── linear_regression/
-    │   └── multivariate.ipynb   # data preparation, 4 models, loss curve, saved model
+    │   ├── multivariate.ipynb       # data preparation, 4 models, loss curve, saved model
+    │   └── wfp_food_prices_rwa.csv  # raw WFP dataset (source linked above)
     ├── API/
-    │   ├── prediction.py        # FastAPI: /predict, /retrain, CORS
+    │   ├── prediction.py            # FastAPI: /predict, /retrain, CORS
     │   ├── requirements.txt
-    │   └── best_model.pkl       # Random Forest + preprocessing
-    └── FlutterApp/              # one-page Flutter mobile app
+    │   └── best_model.pkl           # Random Forest + preprocessing + training data
+    └── FlutterApp/                  # one-page Flutter mobile app
 ```
