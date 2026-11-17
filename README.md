@@ -45,6 +45,10 @@ YouTube: **To be added**
    flutter run -d emulator-5554 or flutter run -d 32151JEHN10602 #depends on method you use like debugging or another emulator
    ```
 7. In the app, choose a province and district (latitude and longitude fill in automatically), enter the year, month and local prices, then tap **Predict**.
+8. (Optional) Run the automated widget tests:
+   ```bash
+   flutter test
+   ```
 
 ## Model results
 Four scikit-learn models were trained and compared on the same test set (mean squared error, lower is better):
