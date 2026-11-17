@@ -30,9 +30,9 @@ Province = Literal[
     "Southern Province", "Western Province",
 ]
 District = Literal[
-    "Bugesera", "Burera", "Gakenke", "Gatsibo", "Gicumbi", "Gisagara", "Huye",
-    "Kamonyi", "Karongi", "Kayonza", "Kicukiro", "Kirehe", "Musanze", "Ngoma",
-    "Ngororero", "Nyabihu", "Nyagatare", "Nyamagabe", "Nyamasheke", "Nyarugenge",
+    "Bugesera", "Burera", "Gakenke", "Gasabo", "Gatsibo", "Gicumbi", "Gisagara", "Huye",
+    "Kamonyi", "Karongi", "Kayonza", "Kicukiro", "Kirehe", "Muhanga", "Musanze", "Ngoma",
+    "Ngororero", "Nyabihu", "Nyagatare", "Nyamagabe", "Nyamasheke", "Nyanza", "Nyarugenge",
     "Nyaruguru", "Rubavu", "Ruhango", "Rulindo", "Rusizi", "Rutsiro", "Rwamagana",
 ]
 
