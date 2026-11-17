@@ -12,6 +12,7 @@ import joblib
 import pandas as pd
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field
 from sklearn.base import clone
 
@@ -105,9 +106,9 @@ class PredictionOutput(BaseModel):
     model: str
 
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 def home():
-    return {"message": "Hen price prediction API is running. Open /docs to test it."}
+    return RedirectResponse(url="/docs")
 
 
 @app.post("/predict", response_model=PredictionOutput)
