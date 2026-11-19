@@ -20,7 +20,7 @@ Public endpoint for testing: **https://hen-price-api.onrender.com/docs**
 Note: the API runs on Render's free plan and may take up to a minute to wake up on the first request.
 
 ## Video demo
-YouTube: **To be added**
+YouTube: https://youtu.be/VI5dFPJy5W0
 
 ## How to run the mobile app
 1. Install [Flutter](https://docs.flutter.dev/get-started/install) and set up an Android emulator (Android Studio -> Device Manager) or connect an Android phone with USB debugging on.
